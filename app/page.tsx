@@ -1,4 +1,14 @@
-// App.js
+// app/pagina.tsx
+import React from 'react';
+import App from '../components/App';
+
+export default function Pagina() {
+  return (
+    <div>
+      <App />
+    </div>
+  );
+}
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Login from './components/Login';
