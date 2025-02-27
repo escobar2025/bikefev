@@ -1,14 +1,23 @@
 // app/pagina.tsx
 import React from 'react';
-import App from '../components/App';
+import { createRoot } from 'react-dom/client';
+import App from './App';
+import './App.css';
 
 export default function Pagina() {
-  return (
-    <div>
-      <App />
-    </div>
-  );
+  return <App />;
 }
+
+// Se você usar este arquivo como ponto de entrada
+if (typeof document !== 'undefined') {
+  const container = document.getElementById('app-root');
+  if (container) {
+    const root = createRoot(container);
+    root.render(<Pagina />);
+  }
+}
+
+// App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Login from './components/Login';
@@ -17,7 +26,7 @@ import AdminDashboard from './components/AdminDashboard';
 import UserDashboard from './components/UserDashboard';
 import MaintenanceTracker from './components/MaintenanceTracker';
 import RideLogger from './components/RideLogger';
-import './App.css'; // Estilos atualizados com variáveis em português sem acentos
+import './App.css';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -1054,4 +1063,3 @@ export const logRide = (userId, bikeId, distance, date) => {
       resolve(newRide);
     }, 500);
   });
-};
